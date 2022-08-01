@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+SC:wght@700&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book shop</title>
+</head>
+
+<body onload="onInit()">
+    <h1>book shop!</h1>
+
+<section>
+    <h3>Sort by max price</h3>
+    <input type="range" min="100" value="500" name="max-price-range" max="500" class="filter-Price-range" oninput="this.title=this.value;onSetFilter()" /><br>
+    <br><h3>Sort by minimum rate</h3>
+    <input type="range" min="0" value="0" name="min-rate-range" max="10" class="filter-Rate-range" oninput="this.title=this.value;onSetFilter()" />
+</section>
+<form oninput="onSetSearchFilter(event)">
+    <h3>Search: <input type="text" value="" name="search-txt" class="filter-Name" placeholder="search by name"></h3>
+</form>
+    <table>
+    </table>
+    <div class="modal">
+        <h3>Description:</h3>
+        <h4></h4>
+        <div class="flexContainer">
+            <button class="minusRateBtn">-</button>
+            <div class="rateValue">...</div>
+            <button class="addRateBtn">+</button>
+        </div>
+        <button onclick="onCloseModal()">Close</button>
+    </div>
+    <button class="prevBtn" onclick="onPrevPage(this)">Previous Page</button>
+    <button class="nextBtn" onclick="onNextPage(this)">Next Page</button>
+
+    <script src="js/util.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
+</body>
+
+</html>

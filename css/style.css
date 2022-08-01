@@ -1,0 +1,99 @@
+table {
+    /* width: 100%; */
+    font-family: arial, sans-serif;
+    /* border-collapse: collapse; */
+    /* width: 100%; */
+    /* background-color: rgb(64, 135, 148); */
+    font-family: 'Anton', sans-serif;
+    font-family: 'Cormorant SC', serif;
+    /* border-radius: 20em; */
+    /* height: 6rem; */
+
+}
+
+h1 {
+    font-family: 'Anton', sans-serif;
+    font-family: 'Cormorant SC', serif;
+    text-align: center;
+}
+
+td {
+    /* display: flex; */
+    background-color: rgba(170, 222, 13, 0);
+    font-size: 1.5em;
+    text-align: center;
+    width: 100vh;
+    height: 4rem;
+    border: 2px solid rgb(120, 174, 38);
+    border-radius: 0.2em;
+}
+
+th {
+    /* border-radius: 20em; */
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    background-color: rgb(180, 215, 228);
+}
+
+tr:nth-child(even) {
+
+    background-color: #dddddd;
+}
+
+body {
+    background-color: rgba(103, 247, 0, 0.379);
+}
+tbody{
+}
+
+button {
+    background-color: rgb(52, 230, 147);
+    border-radius: 1em;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* border: 5em solid rgb(19, 70, 80); */
+    /* border-radius: 2em; */
+    /* max-height: 0.1vh; */
+    /* cursor: pointer; */
+
+}
+button:hover{
+    background-color: rgb(9, 82, 32);
+    cursor: pointer;
+}
+.modal{
+    background-color: #111;
+    padding: 10px;
+    position: absolute;
+    top: 0px;
+    left: 150%;
+    height: 80vh;
+    min-width: 300px;
+    text-align: center;
+}
+.modal.open {
+    left: 50%;
+    transition: left .5s;
+}
+.modal h3{
+    color:rgb(210, 20, 52);
+    text-decoration: overline;
+    text-transform: capitalize;
+}
+h4{
+    color:rgb(4, 78, 43);
+}
+.rateValue{
+    width: 3rem;
+    background-color: lightgreen;
+    text-align: center;
+    /* margin-left: 48%; */
+}
+.flexContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
