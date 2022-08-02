@@ -17,32 +17,60 @@
 </head>
 
 <body onload="onInit()">
-    <h1>book shop</h1>
+    <h1 data-trans="title">Book Shop</h1>
 
-<section>
-    <h3>Sort by max price</h3>
-    <input type="range" min="100" value="500" name="max-price-range" max="500" class="filter-Price-range" oninput="this.title=this.value;onSetFilter()" /><br>
-    <br><h3>Sort by minimum rate</h3>
-    <input type="range" min="0" value="0" name="min-rate-range" max="10" class="filter-Rate-range" oninput="this.title=this.value;onSetFilter()" />
-</section>
-<form oninput="onSetSearchFilter(event)">
-    <h3>Search: <input type="text" value="" name="search-txt" class="filter-Name" placeholder="search by name"></h3>
-</form>
+    <div class="flexContainer flexContainer-controls">
+        <div class="flexContainer flexContainer-range">
+            <section>
+                <h3 data-trans="filter-max-price">Sort by max price</h3>
+                <input type="range" min="100" value="500" name="max-price-range" max="500" class="filter-Price-range"
+                    oninput="this.title=this.value;onSetFilter()" /><br>
+                <br>
+                <h3 data-trans="filter-min-rate">Sort by minimum rate</h3>
+                <input type="range" min="0" value="0" name="min-rate-range" max="10" class="filter-Rate-range"
+                    oninput="this.title=this.value;onSetFilter()" />
+            </section>
+        </div>
+        <div class="flexContainer flexContainer-search">
+            <form oninput="onSetSearchFilter(event)">
+                <h3 data-trans="filter-search">Search:</h3>
+                <input data-trans="search-placeholder" type="text" value="" name="search-txt" class="filter-Name"
+                    placeholder="search by name">
+            </form>
+            <select class="lang" onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
+        </div>
+    </div>
     <table>
     </table>
     <div class="modal">
-        <h3>Description:</h3>
+        <h3 data-trans="modal-description">Description</h3>
         <h4></h4>
-        <div class="flexContainer">
+        <div class="flexContainer flexContainer-modal">
             <button class="minusRateBtn">-</button>
             <div class="rateValue">...</div>
             <button class="addRateBtn">+</button>
         </div>
-        <button onclick="onCloseModal()">Close</button>
+        <button data-trans="modal-close" onclick="onCloseModal()">Close</button>
     </div>
-    <button class="btn-page prevBtn" onclick="onPrevPage(this)">Previous Page</button>
-    <button class="btn-page nextBtn" onclick="onNextPage(this)">Next Page</button>
+    <div class="modal-add-book">
+        <h3 data-trans="modal-book-name">Book Details</h3>
+        </br>
+        <form onsubmit="onSubmitBook(event)">
+            <input type="text" name="book-name-txt" data-trans="modal-add-book-name" placeholder="Book Name">
+            </br>
+            <input type="text" name="book-price-txt" data-trans="modal-add-book-price" placeholder="Book Price">
+            </br>
+            <button data-trans="modal-add">Add</button>
+        </form>
+        <button data-trans="modal-close" onclick="onCloseModal()">Close</button>
+    </div>
+    <button data-trans="prev-btn" class="btn-page prevBtn" onclick="onPrevPage(this)">Previous Page</button>
+    <button data-trans="next-btn" class="btn-page nextBtn" onclick="onNextPage(this)">Next Page</button>
 
+    <script src="js/services/i18n.service.js"></script>
     <script src="js/util.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/book.service.js"></script>

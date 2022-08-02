@@ -3,6 +3,9 @@
 function onInit() {
     renderFilterByQueryStringParams()
     renderBooks()
+    loadCurrLangFromStorage()
+    onSetLang(gCurrLang)
+    doTrans()
 }
 
 function renderBooks() {
@@ -11,10 +14,10 @@ function renderBooks() {
     var strHTMLs = `    
         <thead>
         <th>Id</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Actions</th>
-        <th><button class="btn-page" onclick="onAddBook()">Add book</button></th>
+        <th data-trans="table-title">Title</th>
+        <th data-trans="table-price">Price</th>
+        <th data-trans="table-actions">Actions</th>
+        <th><button data-trans="action-add-book" class="btn-page" onclick="onAddBook()">Add book</button></th>
         </thead>`
     strHTMLs += books.map(book => {
         return `
@@ -23,9 +26,9 @@ function renderBooks() {
     <td>${book.id}</td>
     <td>${book.name}</td>
     <td>${book.price}$</td>
-    <td><button class="btn btn-read" onclick="onReadBook(${book.id})">Read</button></td>
-    <td><button class="btn btn-update" onclick="onUpdateBook(${book.id})">Update</button></td>
-    <td><button class="btn btn-delete" onclick="onRemoveBook(${book.id})">Delete</button></td>
+    <td><button data-trans="actions-read" class="btn btn-read" onclick="onReadBook(${book.id})">Read</button></td>
+    <td><button data-trans="actions-update" class="btn btn-update" onclick="onUpdateBook(${book.id})">Update</button></td>
+    <td><button data-trans="actions-delete" class="btn btn-delete" onclick="onRemoveBook(${book.id})">Delete</button></td>
     </tr>
     </tbody>
     `
@@ -39,14 +42,23 @@ function onUpdateBook(bookId) {
     updateBook(bookId, bookPrice)
     saveBooksToStorage()
     renderBooks()
+    doTrans()
 }
 function onAddBook() {
-    var bookName = prompt('whats the name of the book?')
-    var bookPrice = +prompt('what is the price of the book?')
-    addBook(bookName, bookPrice)
+    const elModal = document.querySelector('.modal-add-book')
+    elModal.classList.add('open')
+}
+function onSubmitBook(ev){
+    ev.preventDefault()
+    var elBookName = document.querySelector('[name=book-name-txt]')
+    var elBookPrice = document.querySelector('[name=book-price-txt]')
+    addBook(elBookName.value,elBookPrice.value)
     saveBooksToStorage()
     renderBooks()
-
+    doTrans()
+    elBookName.value=''
+    elBookPrice.value=''
+    document.querySelector('.modal-add-book').classList.remove('open')
 }
 function onReadBook(bookId) {
     var book = getBookById(bookId)
@@ -63,11 +75,13 @@ function onReadBook(bookId) {
 }
 function onCloseModal() {
     document.querySelector('.modal').classList.remove('open')
+    document.querySelector('.modal-add-book').classList.remove('open')
 }
 function onRemoveBook(bookId) {
     removeBook(bookId)
     saveBooksToStorage()
     renderBooks()
+    doTrans()
 
 }
 
@@ -93,6 +107,7 @@ function onSetFilter() {
     setFilter({ maxPrice: elMaxPrice.value, minRate: elMinRate.value, name: elSearch.value.toUpperCase() })
     saveBooksToStorage()
     renderBooks()
+    doTrans()
 
     var queryStringParams = `?maxPrice=${elMaxPrice.value}&minRate=${elMinRate.value}&name=${elSearch.value}`
     const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + queryStringParams
@@ -113,12 +128,25 @@ function onNextPage(elNext) {
     // console.log(elPrev)
     nextPage(elNext,elPrev)
     renderBooks()
+    doTrans()
 }
+
 function onPrevPage(elPrev){
     var elNext = document.querySelector('.nextBtn')
     // console.log(elNext,elPrev)
     prevPage(elPrev,elNext)
     renderBooks()
+    doTrans()
+}
+
+function onSetLang(lang) {
+    setLang(lang)
+    // if lang is hebrew add RTL class to document.body
+    if (lang === 'he') document.body.classList.add('rtl') 
+    else document.body.classList.remove('rtl')
+    saveCurrLangToStorage()
+    // renderBooks()
+    doTrans()
 }
 
 
