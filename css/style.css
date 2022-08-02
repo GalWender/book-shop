@@ -12,19 +12,28 @@ table {
 }
 
 h1 {
-    font-family: 'Anton', sans-serif;
-    font-family: 'Cormorant SC', serif;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+
+    font-size: 70px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 td {
     /* display: flex; */
-    background-color: rgba(170, 222, 13, 0);
+    background-color: rgba(71, 133, 174, 0.499);
     font-size: 1.5em;
     text-align: center;
     width: 100vh;
     height: 4rem;
-    border: 2px solid rgb(120, 174, 38);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 0.2em;
 }
 
@@ -42,14 +51,16 @@ tr:nth-child(even) {
 }
 
 body {
-    background-color: rgba(103, 247, 0, 0.379);
-}
-tbody{
+    background-color: rgba(255, 255, 255, 0.379);
 }
 
+tbody {}
+
 button {
-    background-color: rgb(52, 230, 147);
-    border-radius: 1em;
+    background-color: rgb(249, 249, 249);
+    width: 8rem;
+    height: 2rem;
+    border-radius: 0.2em;
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
@@ -59,11 +70,40 @@ button {
     /* cursor: pointer; */
 
 }
-button:hover{
-    background-color: rgb(9, 82, 32);
+
+.btn-read {
+    border: 0.2rem solid blue;
+}
+
+.btn-update {
+    border: 0.2rem solid rgb(255, 234, 0);
+}
+
+.btn-delete {
+    border: 0.2rem solid rgb(255, 0, 0);
+}
+
+.btn-page:hover {
+    background-color: rgb(121, 215, 151);
     cursor: pointer;
 }
-.modal{
+
+.btn-read:hover {
+    background-color: rgb(73, 142, 232);
+    cursor: pointer;
+}
+
+.btn-update:hover {
+    background-color: rgb(243, 243, 99);
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: rgb(226, 83, 83);
+    cursor: pointer;
+}
+
+.modal {
     background-color: #111;
     padding: 10px;
     position: absolute;
@@ -73,25 +113,30 @@ button:hover{
     min-width: 300px;
     text-align: center;
 }
+
 .modal.open {
     left: 50%;
     transition: left .5s;
 }
-.modal h3{
-    color:rgb(210, 20, 52);
+
+.modal h3 {
+    color: rgb(210, 20, 52);
     text-decoration: overline;
     text-transform: capitalize;
 }
-h4{
-    color:rgb(4, 78, 43);
+
+h4 {
+    color: rgb(4, 78, 43);
 }
-.rateValue{
+
+.rateValue {
     width: 3rem;
     background-color: lightgreen;
     text-align: center;
     /* margin-left: 48%; */
 }
-.flexContainer{
+
+.flexContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;

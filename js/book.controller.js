@@ -14,7 +14,7 @@ function renderBooks() {
         <th>Title</th>
         <th>Price</th>
         <th>Actions</th>
-        <th><button onclick="onAddBook()">Add book</button></th>
+        <th><button class="btn-page" onclick="onAddBook()">Add book</button></th>
         </thead>`
     strHTMLs += books.map(book => {
         return `
@@ -23,9 +23,9 @@ function renderBooks() {
     <td>${book.id}</td>
     <td>${book.name}</td>
     <td>${book.price}$</td>
-    <td><button onclick="onReadBook(${book.id})">Read</button></td>
-    <td><button onclick="onUpdateBook(${book.id})">Update</button></td>
-    <td><button onclick="onRemoveBook(${book.id})">Delete</button></td>
+    <td><button class="btn btn-read" onclick="onReadBook(${book.id})">Read</button></td>
+    <td><button class="btn btn-update" onclick="onUpdateBook(${book.id})">Update</button></td>
+    <td><button class="btn btn-delete" onclick="onRemoveBook(${book.id})">Delete</button></td>
     </tr>
     </tbody>
     `
